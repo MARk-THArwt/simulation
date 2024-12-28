@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Simi</title>
+  <link rel="stylesheet" href="./css/stylenewspaper.css" />
+  <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="/Simulation/css/all.min.css" />
+  <script src="./node_modules/anychart/dist/js/anychart-bundle.min.js"></script>
+  <script src="./node_modules/xlsx/dist/xlsx.full.min.js"></script>
+</head>
+
+<body>
+  <nav id="nav" class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand fst-italic colorw" href="./home.html">simulation</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active colorw" aria-current="page" href="./home.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link dropdown-toggle colorw" href="#" id="navbarDropdown" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">
+              Team
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li><a class="dropdown-item" href="https://www.linkedin.com/in/ahmed-eyad-3b08452ab">Ahmed
+                  Eyad</a></li>
+              <li><a class="dropdown-item" href="https://www.linkedin.com/in/mark-tharwt-16163b317">Mark
+                  Tharwat</a></li>
+              <li><a class="dropdown-item"
+                  href="https://www.linkedin.com/in/youssef-elbdawy-7aba422a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Yousef
+                  Badawy</a></li>
+              <li><a class="dropdown-item"
+                  href="https://www.linkedin.com/in/%D9%8A%D9%88%D8%B3%D9%81-%D9%85%D8%AD%D9%85%D8%AF-b31205317">Yousef
+                  Mohamed</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="home">
+
+    <div class="contianer">
+      <table id="mytable" class="table table-striped table-hover table-dark">
+        <tbody id="tablebody"></tbody>
+      </table>
+    </div>
+    <div class="container1">
+      <h1>
+        <a style="text-decoration: none;" href="./task3.html">&lt;</a>
+        Simulation Service (4)
+        <a style="text-decoration: none;" href="./task1.html">&gt;</a>
+      </h1>
+      <p>Upload your data and set the parameters to start the simulation.</p>
+      <div class="form-group">
+        <label for="number">Enter a number:</label>
+        <input id="numbertest" type="number" id="number" name="number" placeholder="e.g., 10" required />
+      </div>
+      <div class="form-group">
+        <label for="file">Upload a file:</label>
+        <input id="upload" type="file" id="file" name="file" accept=".xlsx, .xls" required />
+      </div>
+      <div class="buttons">
+        <button id="show">Start Simulation</button>
+        <button id="save">save</button>
+      </div>
+      <footer>
+        <p>Need help? <a href="#">Contact Support</a></p>
+      </footer>
+    </div>
+  </div>
+
+  <div class="background-animation">
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+  <div class="icons mt-2">
+    <div id="bar"><i class="fa-solid fa-bars-staggered"></i></div>
+    <div id="line"><i class="fa-solid fa-chart-line"></i></div>
+    <div id="circle"><i class="fa-solid fa-circle-half-stroke"></i></div>
+  </div>
+
+  <div class="charts">
+    <div id="chart_bar" style="width: 100%; height: 500px; display: none;"></div>
+    <div id="char_Doughnut" style="width: 100%; height: 500px; display: none;"></div>
+    <div id="chart_line" style="width: 100%; height: 500px; display: none;"></div>
+  </div>
+
+
+</body>
+<script src="./Js/Newspaper.js"></script>
+<script src="./Js/Newspaperscript.js"></script>
+<script src="./Js/all.min.js"></script>
+<script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</html>

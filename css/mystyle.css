@@ -1,0 +1,166 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+div.hidd {
+  display: none;
+  color: gold;
+  opacity: 0;
+  transition: opacity 1s ease;
+  font-size: 20px;
+}
+.card:hover div.hidd {
+  display: inline;
+  opacity: 1;
+}
+.card:hover .card-img {
+  filter: brightness(30%);
+  transition: filter 0.3s ease;
+}
+.card-img {
+  height: 100%;
+  object-fit: cover;
+}
+.card {
+  height: 300px !important;
+  overflow: hidden;
+  border-radius: 20px !important;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+.card:hover {
+  border: 2px solid gold;
+  cursor: pointer;
+}
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+#show {
+  padding: 12px 30px;
+  font-size: 16px;
+  font-weight: bold;
+  text-transform: uppercase;
+  background-color: #007bff;
+  color: white;
+  border: 2px solid #007bff;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 123, 255, 0.4);
+}
+
+#show:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+  box-shadow: 0 6px 15px rgba(0, 86, 179, 0.6);
+}
+
+#show:focus {
+  outline: none;
+}
+
+#show:active {
+  transform: scale(0.98);
+}
+
+.landing {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-image: url("../imgs/g.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: brightness(70%);
+}
+.landing .maincontant span {
+  color: #074799;
+}
+.landing .maincontant h1 {
+  color: #074799;
+}
+
+body {
+  background-color: black !important;
+  color: white;
+}
+
+.navbar {
+  z-index: 999;
+  background-color: transparent;
+  height: 60px;
+  width: 100%;
+  position: fixed !important;
+  transition: 0.6s;
+}
+.scroled {
+  background-color: rgb(163, 163, 163);
+  height: 45px;
+}
+.card {
+  background-color: #f8f9fa;
+  color: black;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+}
+
+.label {
+  position: absolute;
+  width: 50px;
+  height: 25px;
+  background-color: black;
+  border-radius: 20px;
+  cursor: pointer;
+  right: 20px;
+  top: 15px;
+}
+
+.circle {
+  width: 18px;
+  background-color: white;
+  height: 18px;
+  border-radius: 50%;
+  top: 3px;
+  position: absolute;
+  left: 3px;
+  animation: toggleOff 0.4s linear forwards;
+}
+
+.input:checked + .label {
+  background-color: white;
+}
+.input:checked + .label .circle {
+  animation: toggleOn 0.4s linear forwards;
+  background-color: black;
+}
+.input {
+  opacity: 0;
+  position: absolute;
+}
+@keyframes toggleOn {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(28px);
+  }
+}
+
+@keyframes toggleOff {
+  0% {
+    transform: translateX(28px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}

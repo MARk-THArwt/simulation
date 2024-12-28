@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task1</title>
+</head>
+<link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
+<link rel="stylesheet" href="./css/all.min.css" />
+<script src="./node_modules/anychart/dist/js/anychart-bundle.min.js"></script>
+<script src="./node_modules/anychart/dist/js/anychart-bundle.min.js"></script>
+
+<style>
+    .navbar {
+        z-index: 999;
+        background-color: transparent;
+        height: 60px;
+        width: 100%;
+        position: sticky !important;
+        transition: 0.6s;
+        top: 0;
+    }
+
+    .colorw {
+        color: white !important;
+    }
+
+    .scroled {
+        background-color: rgb(163, 163, 163);
+        height: 45px;
+    }
+
+    * {
+        padding: 0px;
+        margin: 0px;
+        font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .icons {
+        display: flex;
+        justify-content: center;
+        gap: 30px;
+        font-size: 18px;
+        margin-top: 30px;
+    }
+
+    .icons>* {
+        cursor: pointer;
+        transition: .1s;
+    }
+
+    .icons>*:hover {
+        scale: 1.5;
+    }
+
+    body {
+        color: white;
+        background: linear-gradient(120deg, #1a1a2e, #16213e, #0f3460) !important;
+        position: relative;
+        min-height: 100vh;
+    }
+
+    body>div {
+        margin-bottom: 20px;
+    }
+
+    table {
+        margin: 0px auto;
+        border-collapse: collapse;
+        width: 90vw;
+    }
+
+    .container1 {
+        overflow-x: auto;
+        width: 90vw;
+        margin: 20px auto;
+    }
+
+    table * {
+        color: black;
+        border: 2px solid black;
+        padding: 5px 10px;
+        text-align: center;
+    }
+
+    th {
+        background-color: rgb(179, 185, 249);
+    }
+
+    td {
+        background-color: rgb(100, 103, 184);
+    }
+
+    h1 {
+        text-align: center;
+    }
+
+    h3,
+    #CustNumber,
+    #server_input {
+        display: block;
+        text-align: center;
+        margin: 10px auto;
+    }
+
+    .inputFile {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    input[type="file"] {
+        width: 180px;
+    }
+
+    .inputsContainer {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    button {
+        border: 2px solid transparent;
+        color: white;
+        border-radius: 5px;
+        font-size: 25px;
+        padding: 8px 20px;
+        background-color: rgb(100, 103, 184);
+        transition: .3s;
+    }
+
+    button:hover {
+        color: rgb(100, 103, 184);
+        background-color: white;
+        border: 2px solid rgb(100, 103, 184);
+    }
+
+    #exportToExcel {
+        background-color: rgb(0, 88, 0);
+    }
+
+    #exportToExcel:hover {
+        color: rgb(0, 88, 0);
+        background-color: white;
+        border: 2px solid rgb(0, 88, 0);
+    }
+
+    .inputOfTable {
+        background-color: transparent;
+        border: none;
+        width: 70%;
+        font-size: 16px;
+    }
+
+    .btn_container {
+        display: flex;
+        justify-content: center;
+        gap: 50px;
+    }
+
+    .Modal {
+        box-sizing: border-box;
+        display: none;
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        top: 0%;
+        left: 0%;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: rgba(255, 255, 255, 0.411);
+        border: 1px solid grey;
+        -webkit-backdrop-filter: blur(3px);
+        backdrop-filter: blur(3px);
+    }
+
+    .Modal div:nth-child(1) {
+        margin-bottom: 20px;
+        width: 93%;
+        display: flex;
+        justify-content: end;
+    }
+
+    #close_btn {
+        background-color: red;
+    }
+
+    #close_btn:hover {
+        color: black;
+        border: 2px solid black;
+    }
+
+    .Modal table {
+        margin: 0px;
+        margin-bottom: 10px;
+    }
+
+    .srverNumber {
+        border: None;
+        color: teal;
+    }
+
+    #hiddenTable pre {
+        border: none;
+    }
+
+    .background-animation {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        z-index: -1;
+    }
+
+    .background-animation span {
+        position: absolute;
+        display: block;
+        width: 50px;
+        height: 50px;
+        background: rgba(255, 255, 255, 0.2);
+        animation: animate 10s linear infinite;
+    }
+
+    .background-animation span:nth-child(1) {
+        top: 10%;
+        left: 20%;
+        animation-duration: 12s;
+    }
+
+    .background-animation span:nth-child(2) {
+        top: 40%;
+        left: 60%;
+        animation-duration: 15s;
+    }
+
+    .background-animation span:nth-child(3) {
+        top: 60%;
+        left: 30%;
+        animation-duration: 9s;
+    }
+
+    .background-animation span:nth-child(4) {
+        top: 40%;
+        left: 10%;
+        animation-duration: 13s;
+    }
+
+    .background-animation span:nth-child(5) {
+        top: 60%;
+        left: 90%;
+        animation-duration: 9s;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scale(1) translateY(0) rotate(0deg);
+            opacity: 1;
+        }
+
+        50% {
+            transform: scale(1.5) translateY(-50px) rotate(180deg);
+            opacity: 0.7;
+        }
+
+        100% {
+            transform: scale(1) translateY(0) rotate(360deg);
+            opacity: 1;
+        }
+    }
+</style>
+
+<body>
+    <nav id="nav" class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+            <a class="navbar-brand fst-italic colorw" href="./home.html">simulation</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active colorw" aria-current="page" href="./home.html">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link dropdown-toggle colorw" href="#" id="navbarDropdown" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            Team
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item" href="https://www.linkedin.com/in/ahmed-eyad-3b08452ab">Ahmed
+                                    Eyad</a></li>
+                            <li><a class="dropdown-item" href="https://www.linkedin.com/in/mark-tharwt-16163b317">Mark
+                                    Tharwat</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://www.linkedin.com/in/youssef-elbdawy-7aba422a2?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Yousef
+                                    Badawy</a></li>
+                            <li><a class="dropdown-item"
+                                    href="https://www.linkedin.com/in/%D9%8A%D9%88%D8%B3%D9%81-%D9%85%D8%AD%D9%85%D8%AF-b31205317">Yousef
+                                    Mohamed</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <h1>
+        <a style="text-decoration: none;" href="./Newspaper.html">&lt;</a>
+        Simulation Service (1)
+        <a style="text-decoration: none;" href="./task2.html">&gt;</a>
+    </h1>
+    <div>
+        <label style="width: 100%;" for="CustNumber">
+            <h3>Enter number of customers</h3>
+        </label>
+        <input type="number" value="1" id="CustNumber">
+    </div>
+    <!-- ============================================================================== -->
+    <table style="width: 50vw;">
+        <tr>
+            <th>Issue code</th>
+            <th>Issue Name</th>
+            <th>Issue duration</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Network</td>
+            <td>3</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Software</td>
+            <td>5</td>
+        </tr>
+        <tr>
+            <td>3</td>
+            <td>Hardware</td>
+            <td>7</td>
+        </tr>
+        <tr>
+            <td>4</td>
+            <td>Security</td>
+            <td>9</td>
+        </tr>
+    </table>
+    <!-- ============================================================================== -->
+    <div class="container1">
+        <table id="my_table">
+            <tr>
+                <th>Customer#</th>
+                <th>Inter Arrival time</th>
+                <th>Issue code</th>
+                <th>Issue</th>
+                <th>Arrival time</th>
+                <th>
+                    <p class="srverNumber">&lt;Sr01&gt;</p>
+                    Time service (begin)
+                </th>
+                <th>
+                    <p class="srverNumber">&lt;Sr01&gt;</p>
+                    Service time
+                </th>
+                <th>
+                    <p class="srverNumber">&lt;Sr01&gt;</p>
+                    Time service (end)
+                </th>
+                <th>Customer state</th>
+                <th>System State</th>
+            </tr>
+            <!-- ================================================== -->
+            <tr>
+                <td>
+                    1
+                </td>
+                <td>
+                    <input type="text" class="inputOfTable int_inputs">
+                </td>
+                <td>
+                    <input type="text" class="inputOfTable code_inputs">
+                </td>
+                <td colspan="7">
+                    This content will be auto-generated
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <table style="display: none;" id="hiddenTable">
+
+    </table>
+
+    <div class="btn_container">
+        <button id="excelInputSimultaion">Simulate</button>
+        <button id="exportToExcel" onclick="tableToExcel('hiddenTable', 'Telecome_Simulation', 'mySim.xls')">Export to
+            Excel</button>
+    </div>
+    <div class="Modal">
+        <div class="div_of_closeBtn">
+            <button id="close_btn">X</button>
+        </div>
+        <div id="table_1">
+        </div>
+        <div id="table_2">
+        </div>
+        <div id="table_3"></div>
+    </div>
+
+    <a id="dlink" style="display:none;"></a>
+
+    <div class="background-animation">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+    </div>
+
+    <div class="icons">
+        <div id="bar"><i class="fa-solid fa-bars-staggered"></i></div>
+        <div id="line"><i class="fa-solid fa-chart-line"></i></div>
+        <div id="circle"><i class="fa-solid fa-circle-half-stroke"></i></div>
+    </div>
+
+    <div class="charts">
+        <div id="chart_bar" style="width: 100%; height: 500px; display: none;"></div>
+        <div id="char_Doughnut" style="width: 100%; height: 500px; display: none;"></div>
+        <div id="chart_line" style="width: 100%; height: 500px; display: none;"></div>
+    </div>
+    <script src="./Js/Newspaperscript.js"></script>
+    <script src="./Js/JS_Task1/navigate.js"></script>
+    <script src="./Js/all.min.js"></script>
+    <script src="./Js/JS_Task1/download_excel.js"></script>
+    <script src="./Js/JS_Task1/script.js"></script>
+    <script src="./node_modules/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+
+</html>
